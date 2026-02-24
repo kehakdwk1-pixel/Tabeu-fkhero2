@@ -162,8 +162,18 @@ const CharCard = memo(function CharCard({ c, onView }: { c: Character; onView: (
     return () => clearTimeout(timer)
   }, [c.id])
 
-  const showPlaceholder = !imgReady || imgError
+  const [fallbackFull, setFallbackFull] = useState(false)
   const thumbSrc = `/images/characters/${c.id}_thumb.png`
+  const imgSrc = fallbackFull ? `/images/characters/${c.id}_full.png` : thumbSrc
+  const showPlaceholder = !imgReady || (imgError && !fallbackFull)
+
+  const handleImgError = useCallback(() => {
+    if (!fallbackFull) {
+      setImgError(true)
+      setImgReady(false)
+      setFallbackFull(true)
+    }
+  }, [fallbackFull])
 
   return (
     <div className="char-card" data-f={c.f} ref={cardRef}>
@@ -174,12 +184,11 @@ const CharCard = memo(function CharCard({ c, onView }: { c: Character; onView: (
           <div style={{ fontSize: '0.45rem', opacity: 0.6 }}>/images/characters/{c.id}_thumb.png</div>
         </div>
         <img
-          src={thumbSrc}
+          src={imgSrc}
           alt={c.name}
-          loading="lazy"
           style={{ display: showPlaceholder ? 'none' : 'block' }}
-          onLoad={() => setImgReady(true)}
-          onError={() => setImgError(true)}
+          onLoad={() => { setImgReady(true); setImgError(false) }}
+          onError={handleImgError}
         />
         {c.badgeLabel ? <div className={`cc-badge ${c.gradeCls}`}>{c.badgeLabel}</div> : null}
       </div>
@@ -252,7 +261,7 @@ export default function App() {
           <a href="#grades">등급</a>
           <a href="#characters">인물</a>
           <a href="#masoo">마수</a>
-          <a href="#timeline">연표</a>
+          {/* <a href="#timeline">연표</a> */}
         </nav>
       </nav>
 
@@ -518,6 +527,7 @@ export default function App() {
         </div>
       </section>
 
+      {/* 05 // 연 표 — 40년의 기록 섹션 주석 처리
       <section id="timeline">
         <div className="tl-header reveal">
           <div className="tl-header-title">05 // 연 표 — 40년의 기록</div>
@@ -534,7 +544,9 @@ export default function App() {
           ))}
         </div>
       </section>
+      */}
 
+      {/* 테마 섹션 (01~04) 주석 처리
       <section id="themes">
         <div className="themes-inner">
           {THEMES_ITEMS.map((theme, i) => (
@@ -546,6 +558,7 @@ export default function App() {
           ))}
         </div>
       </section>
+      */}
 
       <div className="strip ink">
         <div className="strip-inner">

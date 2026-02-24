@@ -51,7 +51,8 @@ body::after {
   background: var(--ink);
   border-bottom: 3px solid var(--blue);
   display: flex; align-items: center;
-  height: 44px; overflow: hidden;
+  height: 52px;
+  overflow: hidden;
 }
 .nav-logo {
   flex-shrink: 0;
@@ -61,7 +62,7 @@ body::after {
   display: flex; align-items: center;
 }
 .nav-logo img {
-  height: 28px;
+  height: 34px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -74,7 +75,7 @@ body::after {
 .ticker {
   display: flex; gap: 0; white-space: nowrap;
   animation: ticker 28s linear infinite;
-  font-family: var(--mono); font-size: 0.62rem;
+  font-family: var(--mono); font-size: 0.72rem;
   letter-spacing: 0.1em; color: rgba(255,255,255,0.4);
 }
 .ticker-item { padding: 0 2.5rem; display: flex; align-items: center; gap: 1rem; }
@@ -87,7 +88,7 @@ body::after {
 }
 .nav-menu a {
   height: 100%; padding: 0 1.2rem;
-  font-family: var(--mono); font-size: 0.6rem;
+  font-family: var(--mono); font-size: 0.7rem;
   letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(255,255,255,0.35); text-decoration: none;
   display: flex; align-items: center;
@@ -101,7 +102,7 @@ body::after {
 ══════════════════════════════ */
 #hero {
   min-height: 100vh;
-  padding-top: 44px;
+  padding-top: 52px;
   background: var(--ink);
   position: relative; overflow: hidden;
   display: grid;
@@ -203,7 +204,7 @@ body::after {
 .h-badge.b3 { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.3); }
 
 .hero-right {
-  position: absolute; right: 0; top: 44px; bottom: 0; left: 50%;
+  position: absolute; right: 0; top: 52px; bottom: 0; left: 50%;
   z-index: 1;
   display: flex; align-items: center; justify-content: center;
   pointer-events: none;
@@ -297,7 +298,8 @@ body::after {
 ══════════════════════════════ */
 .strip {
   background: var(--blue);
-  padding: 10px 0; overflow: hidden;
+  padding: 10px 0;
+  overflow: hidden;
   border-top: 2px solid rgba(0,0,0,0.2);
   border-bottom: 2px solid rgba(0,0,0,0.2);
 }
@@ -577,12 +579,13 @@ body::after {
   position: relative; overflow: hidden;
 }
 .cc-img img {
+  position: absolute; inset: 0; z-index: 1;
   width: 100%; height: 100%; object-fit: cover;
   transition: filter 0.3s, transform 0.4s;
 }
 .char-card:hover .cc-img img { filter: brightness(0.7) saturate(0); transform: scale(1.04); }
 .cc-img-ph {
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; z-index: 0;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 6px;
