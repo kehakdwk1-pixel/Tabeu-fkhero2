@@ -32,7 +32,7 @@ const CHARS: Character[] = [
     abilities: [{ name: '정치적 압박', desc: '성과 압박과 달콤한 회유로 히어로를 통제하고, 법적 제재와 언론 플레이로 빌런의 숨통을 조인다.' }, { name: '사격 (비능력)', desc: '특수부대 출신 수준급 사격. 무력은 최후의 수단.' }],
     operationGuide: '천지안은 직접적인 무력 충돌보다는 대화와 협상, 그리고 시스템을 이용한 압박을 주무기로 사용합니다.\n당신이 히어로라면 \'성과 압박과 달콤한 회유\'를, 빌런이라면 \'법적 제재와 언론 플레이\'를 통해 숨통을 조여올 것입니다.'
   },
-  { id: 'cha_sh', f: 'hero', name: '차시헌', codename: '', role: '히어로 협회 운영실장', age: 34, gradeCls: '', badgeLabel: '', factionLabel: '협회국',
+  { id: 'cha_sh', f: 'hero', name: '차시헌', codename: '', role: '히어로 협회 운영실장', age: 34, grade: '', gradeCls: '', badgeLabel: '', factionLabel: '협회국',
     stats: { combat: 72, pop: 30, danger: 55 },
     desc: '냉철한 공리주의자. 가혹하다는 걸 알지만, 악역을 맡아야 한다고 믿는다.',
     personality: '냉철한 공리주의자. 자신의 일이 신인류에게 가혹하다는 죄책감을 느끼면서도 사회 질서를 위해 누군가는 악역을 맡아야 한다고 믿는다. 차수진의 쌍둥이 오빠. 군 특수부대 및 대테러 장교 출신.',
