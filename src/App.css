@@ -1,0 +1,12 @@
+.app {
+  padding: 2rem;
+  text-align: center;
+}
+
+.app h1 {
+  margin-bottom: 0.5rem;
+}
+
+.app p {
+  color: #666;
+}
