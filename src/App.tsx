@@ -47,7 +47,7 @@ const CHARS: Character[] = [
     operationGuide: '이루미는 \'압도적인 힘과 허당미의 갭모에\'가 핵심인 캐릭터입니다.\n당신이 협회 관계자라면 \'말 안 듣는 고양이\'처럼 다루기 힘들 것이고, 동료 히어로라면 \'든든하지만 손이 많이 가는 여동생\' 같은 존재일 것입니다. 빌런 입장에서는 \'말이 안 통하는 자연재해\' 그 자체입니다.'
   },
   { id: 'han_jy', f: 'hero', name: '한재이', codename: '리코일', role: 'A급 히어로', age: 25, grade: 'A', gradeCls: 'cb-a', badgeLabel: 'A급', factionLabel: '협회국',
-    stats: { combat: 84, pop: 91, danger: 45 },
+    stats: { combat: 84, pop: 87, danger: 45 },
     desc: '에너지 넘치는 팀의 분위기 메이커. 팬들에게 먼저 다가가는 서비스 정신.',
     personality: '언제나 에너지가 넘치고 친화력이 좋다. 팬들에게 먼저 다가가 셀카를 찍어주고 우는 아이를 달래주는 서비스 정신투철하다. 바보같은 면과 달리 전투 IQ가 높으며 사람 마음을 읽는 기민함을 가짐.',
     abilities: [{ name: '운동 에너지 축적', desc: '타격하거나 타격받을 때의 충격 에너지를 몸 안에 축적한다.' }, { name: '폭발적 방출', desc: '축적 에너지를 한 번에 방출하는 일격 필살. 탱커와 딜러 역할 동시 수행.' }],
@@ -82,7 +82,7 @@ const CHARS: Character[] = [
     operationGuide: '노재하는 \'다가가기 힘들지만, 한 번 마음을 열면 헌신적인 고슴도치\'입니다.\n당신이 빌런 동료라면 \'말수는 적지만 가장 신뢰할 수 있는 등을 가진 파트너\'일 것이고, 히어로라면 \'보이지 않는 공포이자 까다로운 추적 대상\'일 것입니다.'
   },
   { id: 'pyo_nr', f: 'villain', name: '표나리', codename: '스칼렛 프라이드', role: '빌런 협회 실행부', age: 24, grade: 'B', gradeCls: 'cb-b', badgeLabel: 'B급', factionLabel: '빌런협회',
-    stats: { combat: 73, pop: 65, danger: 72 },
+    stats: { combat: 73, pop: 92, danger: 72 },
     desc: '세상의 중심은 자신. 자부심 넘치는 매력적인 악녀.',
     personality: '세상의 중심은 자신이라 믿는다. 자신을 무시하는 사람은 절대 용서하지 않는다. 테러 현장에서도 셀카를 찍어 올리거나, 히어로를 조롱하는 라방을 켜는 관종력을 자랑한다.',
     abilities: [{ name: '혈액 조작', desc: '혈액을 채찍·칼날·망치 등으로 변형시켜 공격한다.' }, { name: '혈류 교란', desc: '상대의 상처에 피를 주입해 혈액 순환 방해 또는 신체 능력 저하.' }],
@@ -178,7 +178,7 @@ const CharCard = memo(function CharCard({ c, onView }: { c: Character; onView: (
   }, [fallbackFull])
 
   return (
-    <div className="char-card" data-f={c.f} ref={cardRef}>
+    <div className="char-card" data-f={c.f} ref={cardRef} onClick={() => onView(c.id)} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onView(c.id)} aria-label={`${c.name} 상세 보기`}>
       <div className="cc-stripe" />
       <div className="cc-img">
         <div className="cc-img-ph" style={{ display: showPlaceholder ? 'flex' : 'none' }}>
@@ -287,9 +287,18 @@ export default function App() {
             <div className="h-stat"><div className="h-stat-n">40Y</div><div className="h-stat-l">역사</div></div>
           </div>
           <div className="hero-badges">
-            <div className="h-badge b1">⚡ 히어로 협회국</div>
-            <div className="h-badge b2">💀 빌런 협회</div>
-            <div className="h-badge b3">🌌 네브라키움</div>
+            <div className="h-badge b1">
+              <img src="/images/1히어로 협회국.png" alt="" className="h-badge-logo" />
+              <span>히어로 협회국</span>
+            </div>
+            <div className="h-badge b2">
+              <img src="/images/2빌런 협회.png" alt="" className="h-badge-logo" />
+              <span>빌런 협회</span>
+            </div>
+            <div className="h-badge b3">
+              <img src="/images/4네브라키움.png" alt="" className="h-badge-logo" />
+              <span>네브라키움</span>
+            </div>
           </div>
         </div>
 
@@ -342,6 +351,7 @@ export default function App() {
 
             <div className="org-block org-block-hero">
               <div className="org-block-header">
+                <img src="/images/1히어로 협회국.png" alt="" className="org-block-logo" />
                 <span className="org-block-name">히어로 협회국</span>
                 <span className="org-block-type">GOV / HERO BUREAU</span>
               </div>
@@ -360,6 +370,7 @@ export default function App() {
 
             <div className="org-block org-block-villain" style={{ marginTop: 0 }}>
               <div className="org-block-header">
+                <img src="/images/2빌런 협회.png" alt="" className="org-block-logo" />
                 <span className="org-block-name">빌런 협회</span>
                 <span className="org-block-type">ANTI-GOV</span>
               </div>
@@ -374,6 +385,7 @@ export default function App() {
 
             <div className="org-block org-block-nebra">
               <div className="org-block-header">
+                <img src="/images/4네브라키움.png" alt="" className="org-block-logo" />
                 <span className="org-block-name">네브라키움</span>
                 <span className="org-block-type">ALIEN / OBSERVER</span>
               </div>
@@ -624,6 +636,13 @@ export default function App() {
                     <div className="modal-code" id="mCode">{modalChar.codename ? `// ${modalChar.codename} //` : `// ${modalChar.factionLabel} //`}</div>
                     <div className="modal-role" id="mRole">{modalChar.role} · 만 {modalChar.age}세</div>
                   </div>
+                  <div className="modal-faction-logo-wrap">
+                    <img
+                      src={modalChar.factionLabel === '네브라키움' ? '/images/4네브라키움.png' : modalChar.factionLabel === '미등록' ? '/images/3무소속.png' : modalChar.f === 'hero' ? '/images/1히어로 협회국.png' : '/images/2빌런 협회.png'}
+                      alt=""
+                      className="modal-faction-logo"
+                    />
+                  </div>
                 </div>
                 <div className="modal-cols">
                   <div className="modal-col">
@@ -648,6 +667,16 @@ export default function App() {
                     <div className="modal-guide">{modalChar.operationGuide}</div>
                   </div>
                 ) : null}
+                <div className="modal-scenes-wrap">
+                  <div className="modal-scene-block">
+                    <div className="modal-section-lbl">전투씬</div>
+                    <ModalSceneImage id={modalChar.id} type="battle" />
+                  </div>
+                  <div className="modal-scene-block">
+                    <div className="modal-section-lbl">패배씬</div>
+                    <ModalSceneImage id={modalChar.id} type="defeat" />
+                  </div>
+                </div>
               </div>
             </>
           )}
@@ -678,5 +707,30 @@ const ModalCharImage = memo(function ModalCharImage({ id }: { id: string }) {
         <div>삼면도 이미지 (1800×600)</div>
       </div>
     </>
+  )
+})
+
+const ModalSceneImage = memo(function ModalSceneImage({ id, type }: { id: string; type: 'battle' | 'defeat' }) {
+  const [loaded, setLoaded] = useState(false)
+  const [error, setError] = useState(false)
+  const filename = type === 'battle' ? `${id}_battle.png` : `${id}_defeat.png`
+  const src = `/images/characters/${filename}`
+
+  return (
+    <div className="modal-scene-img-wrap">
+      <img
+        src={src}
+        alt={type === 'battle' ? '전투씬' : '패배씬'}
+        className="modal-scene-img"
+        style={{ display: loaded && !error ? 'block' : 'none' }}
+        onLoad={() => setLoaded(true)}
+        onError={() => setError(true)}
+      />
+      {(!loaded || error) && (
+        <div className="modal-scene-ph">
+          <span>{filename}</span>
+        </div>
+      )}
+    </div>
   )
 })

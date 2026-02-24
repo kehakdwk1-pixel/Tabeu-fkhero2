@@ -195,9 +195,19 @@ body::after {
   margin-top: 2rem; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
 }
 .h-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--mono); font-size: 0.62rem;
-  padding: 5px 14px; border: 1.5px solid;
+  padding: 6px 14px; border: 1.5px solid;
   letter-spacing: 0.1em; text-transform: uppercase;
+}
+.h-badge-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
 }
 .h-badge.b1 { border-color: var(--blue); color: var(--blue); }
 .h-badge.b2 { border-color: var(--red); color: var(--red); }
@@ -403,13 +413,21 @@ body::after {
 .org-block-header {
   background: var(--ink); color: #fff;
   padding: 0.6rem 1rem;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; gap: 10px;
+}
+.org-block-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
 }
 .org-block-name { font-family: var(--display); font-size: 1.1rem; letter-spacing: 0.05em; }
 .org-block-type {
   font-family: var(--mono); font-size: 0.55rem;
   letter-spacing: 0.15em; text-transform: uppercase;
   opacity: 0.4;
+  margin-left: auto;
 }
 .org-block-hero .org-block-header { background: var(--blue); }
 .org-block-villain .org-block-header { background: var(--red); }
@@ -454,7 +472,7 @@ body::after {
 }
 .g-tab {
   flex: 1; padding: 1rem;
-  font-family: var(--mono); font-size: 0.62rem;
+  font-family: var(--mono); font-size: 0.78rem;
   letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(255,255,255,0.3);
   background: none; border: none; cursor: pointer;
@@ -480,10 +498,10 @@ body::after {
   vertical-align: middle;
 }
 .grade-table th {
-  padding: 0.6rem 1.5rem;
-  font-family: var(--mono); font-size: 0.55rem;
+  padding: 0.70rem 1.5rem;
+  font-family: var(--mono); font-size: 0.7rem;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.25); text-align: left;
+  color: #fff; text-align: left;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -509,7 +527,7 @@ body::after {
 .grade-desc { color: rgba(255,255,255,0.5); line-height: 1.6; }
 .grade-quip {
   font-family: var(--mono); font-size: 0.65rem;
-  color: var(--yellow); font-style: italic;
+  color: var(--yellow);
 }
 
 #characters {
@@ -533,9 +551,10 @@ body::after {
   display: flex; gap: 0; border: 2px solid var(--ink);
 }
 .c-filter {
-  font-family: var(--mono); font-size: 0.6rem;
+  font-family: var(--mono); font-size: 0.75rem;
   letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 7px 16px;
+  padding: 10px 22px;
+  white-space: nowrap;
   border-right: 2px solid var(--ink);
   color: var(--ink); background: transparent;
   transition: all 0.15s; cursor: pointer; border: none;
@@ -553,6 +572,7 @@ body::after {
   border-left: 2px solid var(--ink);
 }
 .char-card {
+  cursor: pointer;
   border-right: 2px solid var(--ink);
   border-bottom: 2px solid var(--ink);
   cursor: pointer;
@@ -610,7 +630,7 @@ body::after {
 .cc-body { padding: 1rem; }
 .cc-name { font-family: var(--display); font-size: 1.4rem; letter-spacing: 0.04em; line-height: 1; transition: color 0.15s; }
 .cc-codename {
-  font-family: var(--mono); font-size: 0.55rem;
+  font-family: var(--mono); font-size: 0.78rem;
   letter-spacing: 0.1em; margin-top: 1px; margin-bottom: 0.2rem;
 }
 [data-f="hero"] .cc-codename { color: var(--blue); }
@@ -697,6 +717,7 @@ body::after {
   transition: background 0.15s;
 }
 .masoo-grade-row:hover { background: var(--ink); }
+.masoo-grade-row:hover .mg-name { color: #fff; }
 .masoo-grade-row:hover .mg-text { color: rgba(255,255,255,0.5); }
 .masoo-grade-row:hover .mg-quip { color: var(--yellow); }
 .mg-badge-cell {
@@ -715,7 +736,7 @@ body::after {
 .mg-info { padding: 0.75rem 1rem; flex: 1; }
 .mg-name { font-family: var(--display); font-size: 1rem; letter-spacing: 0.04em; }
 .mg-text { font-size: 0.72rem; color: #555; transition: color 0.15s; }
-.mg-quip { font-family: var(--mono); font-size: 0.6rem; color: #aaa; font-style: italic; margin-top: 3px; transition: color 0.15s; }
+.mg-quip { font-size: 0.75rem; color: #555; margin-top: 3px; transition: color 0.15s; }
 
 #timeline {
   background: var(--paper);
@@ -879,6 +900,20 @@ footer {
   display: flex; align-items: stretch;
   border-bottom: 2px solid var(--ink);
 }
+.modal-faction-logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border-left: 1px solid rgba(0,0,0,0.08);
+}
+.modal-faction-logo {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0);
+}
 .modal-grade-cell {
   width: 80px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
@@ -887,7 +922,7 @@ footer {
 }
 .modal-header-info { padding: 1.25rem 1.5rem; flex: 1; }
 .modal-name { font-family: var(--display); font-size: 2rem; letter-spacing: 0.04em; }
-.modal-code { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; margin-top: 1px; }
+.modal-code { font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.15em; margin-top: 1px; }
 [data-mf="hero"] .modal-code { color: var(--blue); }
 [data-mf="villain"] .modal-code { color: var(--red); }
 [data-mf="other"] .modal-code { color: #8b5cf6; }
@@ -897,18 +932,18 @@ footer {
 .modal-col { padding: 1.25rem 1.5rem; }
 .modal-col:first-child { border-right: 2px solid var(--ink); }
 .modal-section-lbl {
-  font-family: var(--mono); font-size: 0.55rem;
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 700;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: #aaa; margin-bottom: 0.5rem; padding-bottom: 4px;
+  color: var(--ink); margin-bottom: 0.5rem; padding-bottom: 4px;
   border-bottom: 1px dotted rgba(0,0,0,0.12);
 }
-.modal-personality { font-size: 0.8rem; color: #555; line-height: 1.75; }
+.modal-personality { font-size: 0.9rem; color: #555; line-height: 1.75; }
 .modal-abilities { display: flex; flex-direction: column; gap: 8px; }
 .ability-block {
   border: 1px solid rgba(0,0,0,0.1); padding: 8px 12px;
-  font-size: 0.78rem; color: #555; line-height: 1.6;
+  font-size: 0.86rem; color: #555; line-height: 1.6;
 }
-.ability-name { font-family: var(--mono); font-size: 0.62rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; letter-spacing: 0.06em; }
+.ability-name { font-family: var(--mono); font-size: 0.72rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; letter-spacing: 0.06em; }
 
 .modal-guide-wrap {
   padding: 1.25rem 1.5rem;
@@ -916,8 +951,44 @@ footer {
   background: var(--paper2);
 }
 .modal-guide {
-  font-size: 0.8rem; color: #555; line-height: 1.75;
+  font-size: 0.9rem; color: #555; line-height: 1.75;
   white-space: pre-line;
+}
+
+.modal-scenes-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 2px solid var(--ink);
+  background: var(--paper);
+}
+.modal-scene-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.modal-scene-img-wrap {
+  position: relative;
+  aspect-ratio: 16/10;
+  background: var(--paper2);
+  border: 1px solid rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.modal-scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-scene-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: rgba(0,0,0,0.2);
 }
 
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
@@ -939,12 +1010,18 @@ footer {
   .footer-meta { text-align: left; }
   .modal-cols { grid-template-columns: 1fr; }
   .modal-col:first-child { border-right: none; border-bottom: 2px solid var(--ink); }
+  .modal-scenes-wrap { grid-template-columns: 1fr; }
   .nav-menu { display: none; }
   .grade-tabs { flex-wrap: wrap; }
   .g-tab { flex: auto; }
+  .grade-table th:first-child,
+  .grade-table td:first-child { display: none; }
+  .char-filters { flex-wrap: nowrap; }
+  .c-filter { padding: 10px 14px; font-size: 0.7rem; }
 }
 @media (max-width: 600px) {
   .themes-inner { grid-template-columns: 1fr; }
   .world-header { grid-template-columns: 1fr; gap: 1rem; }
   .world-header-num { display: none; }
+  .c-filter { padding: 8px 10px; font-size: 0.65rem; }
 }
